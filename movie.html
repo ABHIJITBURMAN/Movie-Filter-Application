@@ -45,7 +45,7 @@
             showMovie = ()=>{
                 let res = sessionStorage.getItem('movieID');
                 // console.log(res);
-                axios.get(`http://omdbapi.com/?i=${res}&apikey=${apiKey}`)
+                axios.get(`https://omdbapi.com/?i=${res}&apikey=${apiKey}`)
                 .then( (responce)=>{
             
             let movie = [];
