@@ -3,7 +3,7 @@ const apiKey = '9cc6c607';
 
 $(document).ready(()=>{
     
-$('#searchForm').on('submit', (e)=>{
+$('#searchBtn').on('click', (e)=>{
 
     let searchText = $('#searchText').val();
 
@@ -12,7 +12,6 @@ $('#searchForm').on('submit', (e)=>{
 
 
     e.preventDefault();
-})
 
 getMovies = (movie)=>{
 
@@ -21,8 +20,9 @@ getMovies = (movie)=>{
         
         let movies = [];
         movies = responce.data.Search;
-        let output="";
-        console.log(movies);
+        if(responce.data.Response === 'True'){
+            let output="";
+        // console.log(movies);
         $.each(movies, (index,movie)=>{
             output+=`
             <div class="col-md-3">
@@ -34,8 +34,19 @@ getMovies = (movie)=>{
             </div>
             `;
         });
-
         $('#movies').html(output);
+        
+        }
+        else{
+            let output = "";
+            output+=`
+            <div style="display:flex;flex-direction:column; height:200px; align-items:center;">
+                <h4>Movie Does Not Found</h4>
+                <img src="sad.jpg" style="height:100%; width:200px;" >
+            </div>
+            `;
+            $('#movies').html(output);
+        }
        
     })
     .catch( (error)=>{
