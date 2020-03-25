@@ -12,6 +12,7 @@ $('#searchBtn').on('click', (e)=>{
 
 
     e.preventDefault();
+})
 
 getMovies = (movie)=>{
 
@@ -20,10 +21,12 @@ getMovies = (movie)=>{
         
         let movies = [];
         movies = responce.data.Search;
+        console.log(responce.data.Response);
+
         if(responce.data.Response === 'True'){
             let output="";
         // console.log(movies);
-         $.each(movies, (index,movie)=>{
+        $.each(movies, (index,movie)=>{
             output+=`
                 <div class="col-md-3">
                     <div class="well text-center">
@@ -52,6 +55,8 @@ getMovies = (movie)=>{
             `;
             $('#movies').html(output);
         }
+       
+        
        
     })
     .catch( (error)=>{
