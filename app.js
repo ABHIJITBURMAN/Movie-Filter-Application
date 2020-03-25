@@ -16,7 +16,7 @@ $('#searchForm').on('submit', (e)=>{
 
 getMovies = (movie)=>{
 
-    axios.get(`http://omdbapi.com/?s=${movie}&apikey=${apiKey}`)
+    axios.get(`https://omdbapi.com/?s=${movie}&apikey=${apiKey}`)
     .then( (responce)=>{
         
         let movies = [];
